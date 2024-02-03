@@ -1,0 +1,211 @@
+{
+    "__templates": {
+        "aliasDefinitionsTemplate": {
+            "name": "aliasName",
+            "value": "commandToAlias"
+        },
+        "environmentVariablesTemplate": {
+            "name": "envVariableName",
+            "value": "envVariableValue"
+        },
+        "functionDefinitionsTemplate": {
+            "name": "functionName",
+            "scriptBlock": "{param($myParam) $myParam}"
+        },
+        "modulesToImportTemplate": {
+            "moduleName": "",
+            "moduleVersion": "",
+            "guid": ""
+        },
+        "scriptsToProcessTemplate": {
+            "scriptName": "C:\\path\\to\\script"
+        },
+        "variableDefinitionsTemplate": {
+            "variableName": "variableValue"
+        },
+        "visibleAliasesTemplate": {
+            "aliasName": "",
+            "aliasName2": "",
+            "aliasName3": ""
+        },
+        "visibleCmdletGroupsTemplate": {
+            "name": "",
+            "parameters": [],
+            "validateSet": [],
+            "validatePattern": ""
+        },
+        "visibleCmdletsTemplate": {
+            "name": "",
+            "parameters": [],
+            "validateSet": [],
+            "validatePattern": ""
+        },
+        "visibleFunctionsTemplate": {
+            "name": "",
+            "parameters": [],
+            "validateSet": [],
+            "validatePattern": ""
+        },
+        "visibleExternalCommandsTemplate": {
+            "cmdName": "C:\\path\\to\\cmd"
+        },
+        "visibleProvidersTemplate": {
+            "providerName": "providerName",
+            "Registry": "Registry"
+        }
+    },
+    "RoleCapabilities": {
+        "AliasDefinitions": {},
+        "FunctionDefinitions": {},
+        "ModulesToImport": {},
+        "ScriptsToProcess": {
+            "authorizedAccessDisclaimer": "C:\\JEA\\JEA.Config\\authorizedAccessDisclaimer.ps1",
+            "welcomeMessage": "C:\\JEA\\JEA.Config\\welcomeMessage.ps1"
+        },
+        "VariableDefinitions": {},
+        "VisibleAliases": {
+            "ls": "ls",
+            "dir": "dir"
+        },
+        "VisibleCmdlets": {
+            "getService": {
+                "name": "Get-Service",
+                "parameters": {
+                    "name": {
+                        "parameterName": "Name",
+                        "validateSet": {
+                            "default": [],
+                            "spooler": "spooler"
+                        },
+                        "validatePattern": {
+                            "default": "*win*",
+                            "appAdmin": "app*",
+                            "appSupport": "app-.*"
+                        }
+                    },
+                    "displayName": {
+                        "parameterName": "DisplayName",
+                        "validateSet": {
+                            "default": [],
+                            "spooler": "Print Spooler"
+                        },
+                        "validatePattern": {
+                            "default": "*win*",
+                            "appAdmin": "application*",
+                            "appSupport": "app-.*"
+                        }
+                    }
+                }
+            },
+            "restartService": {
+                "name": "Restart-Service",
+                "parameters": {
+                    "name": {
+                        "parameterName": "Name",
+                        "validatePattern": {
+                            "appSupport": "app-.*"
+                        }
+                    },
+                    "displayName": {
+                        "parameterName": "DisplayName",
+                        "validatePattern": {
+                            "appSupport": "app-.*"
+                        }
+                    }
+                }
+            },
+            "getProcess": {
+                "name": "Get-Process",
+                "parameters": {
+                    "name": {
+                        "parameterName": "Name"
+                    },
+                    "Id": {
+                        "parameterName": "Id"
+                    }
+                }
+            },
+            "getIisAppPool": {
+                "name": "IISAdministration\\Get-IISAppPool",
+                "parameters": {
+                    "name": {
+                        "parameterName": "Name"
+                    }
+                }
+            },
+            "restartWebAppPool": {
+                "name": "WebAdministration\\Restart-WebAppPool",
+                "parameters": {
+                    "name": {
+                        "parameterName": "Name"
+                    }
+                }
+            },
+            "selectObject": {
+                "name": "Select-Object"
+            }
+        },
+        "VisibleCmdletGroups": {
+            "getCmdlets": {
+                "management": [
+                    "Microsoft.PowerShell.Management\\Get-*",
+                    "Microsoft.PowerShell.Management\\Testing-*"
+                ],
+                "test": "Microsoft.PowerShell.Management\\Get-*"
+            },
+            "formattingCmdlets": {
+                "formatting": "Microsoft.PowerShell.Utility\\Format-*",
+                "testing": "Microsoft.PowerShell.Utility\\Testing-*"
+            }
+        },
+        "VisibleFunctions": {
+            "enableTabCompletion": "TabExpansion2",
+            "getLogs": "Get-Logs",
+            "restartCustomServices": "Restart-CustomServices",
+            "getProcessInformation": "Get-ProcessInformation"
+        },
+        "VisibleExternalCommands": {
+            "ping": "C:\\Windows\\System32\\ping.exe",
+            "ipConfig": "C:\\Windows\\System32\\ipConfig.exe"
+        },
+        "VisibleProviders": {}
+    },
+    "SessionConfiguration": {
+        "RoleCapabilityFiles": {
+            "devOps": "C:\\JEA\\JEA.DevOps\\RoleCapabilities\\JEA.DevOps.psrc",
+            "support.Admin": "C:\\JEA\\JEA.Support.Admin\\RoleCapabilities\\JEA.Support.Admin.psrc",
+            "support.Controller": "C:\\JEA\\JEA.Support.Admin\\RoleCapabilities\\JEA.Support.Admin.psrc",
+            "support.Operator": "C:\\JEA\\JEA.Support.Admin\\RoleCapabilities\\JEA.Support.Admin.psrc"
+        },
+        "GroupRoleDefinitions": {
+            "support.Admin": "",
+            "support.Controller": "",
+            "support.Operator": ""
+        },
+        "RequiredGroups": {
+            "support.Admin": "",
+            "support.Controller": "",
+            "support.Operator": ""
+        },
+        "TranscriptDirectory": {
+            "support": "C:\\JEA\\supportTranscripts\\"
+        },
+        "ScriptsToProcess": {
+            "support": [
+                "C:\\JEA\\JEA.Config\\welcomeMessage.ps1",
+                "C:\\JEA\\JEA.Config\\authorizedAccessDisclaimer.ps1"
+            ]
+        },
+        "SessionType": {
+            "restrictedRemoteServer": "RestrictedRemoteServer",
+            "empty": "Empty",
+            "default": "Default"
+        },
+        "LanguageMode": {
+            "noLanguage": "NoLanguage",
+            "restrictedLanguage": "RestrictedLanguage",
+            "constrainedLanguage": "ConstrainedLanguage",
+            "fullLanguage": "FullLanguage"
+        }
+    }
+}
