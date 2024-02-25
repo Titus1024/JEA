@@ -57,15 +57,22 @@
     "RoleCapabilities": {
         "AliasDefinitions": {},
         "FunctionDefinitions": {},
-        "ModulesToImport": {},
+        "ModulesToImport": {
+            "iiSAdministration": "IISAdministration",
+            "webAdministration": "WebAdministration",
+            "microsoftPowerShellManagement": "Microsoft.PowerShell.Management"
+        },
         "ScriptsToProcess": {
             "authorizedAccessDisclaimer": "C:\\JEA\\JEA.Config\\authorizedAccessDisclaimer.ps1",
-            "welcomeMessage": "C:\\JEA\\JEA.Config\\welcomeMessage.ps1"
+            "welcomeMessage": "C:\\JEA\\JEA.Config\\welcomeMessage.ps1",
+            "setLocation": "C:\\JEA\\JEA.Config\\setLocation.ps1"
         },
         "VariableDefinitions": {},
         "VisibleAliases": {
             "ls": "ls",
-            "dir": "dir"
+            "dir": "dir",
+            "pwd": "pwd",
+            "cd": "cd"
         },
         "VisibleCmdlets": {
             "getService": {
@@ -74,26 +81,37 @@
                     "name": {
                         "parameterName": "Name",
                         "validateSet": {
-                            "default": [],
                             "spooler": "spooler"
                         },
                         "validatePattern": {
-                            "default": "*win*",
-                            "appAdmin": "app*",
-                            "appSupport": "app-.*"
+                            "appSupport": "IT\\..+"
                         }
                     },
                     "displayName": {
                         "parameterName": "DisplayName",
                         "validateSet": {
-                            "default": [],
                             "spooler": "Print Spooler"
                         },
                         "validatePattern": {
-                            "default": "*win*",
-                            "appAdmin": "application*",
-                            "appSupport": "app-.*"
+                            "appSupport": "IT\\..+"
                         }
+                    }
+                }
+            },
+            "getChildItem": {
+                "name": "Get-ChildItem",
+                "parameters": {
+                    "path": {
+                        "parameterName": "Path"
+                    },
+                    "hidden": {
+                        "parameterName": "Hidden"
+                    },
+                    "filter": {
+                        "parameterName": "Filter"
+                    },
+                    "recurse": {
+                        "parameterName": "Recurse"
                     }
                 }
             },
@@ -103,13 +121,13 @@
                     "name": {
                         "parameterName": "Name",
                         "validatePattern": {
-                            "appSupport": "app-.*"
+                            "appSupport": "IT\\..+"
                         }
                     },
                     "displayName": {
                         "parameterName": "DisplayName",
                         "validatePattern": {
-                            "appSupport": "app-.*"
+                            "appSupport": "IT\\..+"
                         }
                     }
                 }
@@ -126,7 +144,7 @@
                 }
             },
             "getIisAppPool": {
-                "name": "IISAdministration\\Get-IISAppPool",
+                "name": "Get-IISAppPool",
                 "parameters": {
                     "name": {
                         "parameterName": "Name"
@@ -134,7 +152,7 @@
                 }
             },
             "restartWebAppPool": {
-                "name": "WebAdministration\\Restart-WebAppPool",
+                "name": "Restart-WebAppPool",
                 "parameters": {
                     "name": {
                         "parameterName": "Name"
@@ -143,6 +161,42 @@
             },
             "selectObject": {
                 "name": "Select-Object"
+            },
+            "getLocation": {
+                "name": "Get-Location"
+            },
+            "setLocation": {
+                "name": "Set-Location",
+                "parameters": {
+                    "path": {
+                        "parameterName": "Path",
+                        "validatePattern": {
+                            "logsAndConfig": "(C:\\\\Logs\\\\.+)|(C:\\\\temp)|(C:\\\\Program Files (x86)\\\\Polselli IT\\\\.+)"
+                        }
+                    }
+                }
+            },
+            "getContent": {
+                "name": "Get-Content",
+                "parameters": {
+                    "path": {
+                        "parameterName": "Path",
+                        "validatePattern": {
+                            "logsAndConfig": "(C:\\\\Logs\\\\.+)|(C:\\\\temp)|(C:\\\\Program Files (x86)\\\\Polselli IT\\\\.+)"
+                        }
+                    }
+                }
+            },
+            "testComputerSecureChannel": {
+                "name": "Test-ComputerSecureChannel",
+                "parameters": {
+                    "server": {
+                        "parameterName": "Server",
+                        "validatePattern": {
+                            "domainControllers": "((CO|TN|B4)\\w{2,4}\\d{1})"
+                        }
+                    }
+                }
             }
         },
         "VisibleCmdletGroups": {
@@ -166,35 +220,36 @@
         },
         "VisibleExternalCommands": {
             "ping": "C:\\Windows\\System32\\ping.exe",
-            "ipConfig": "C:\\Windows\\System32\\ipConfig.exe"
+            "ipConfig": "C:\\Windows\\System32\\ipConfig.exe",
+            "iisReset": "C:\\Windows\\System32\\iisReset.exe",
+            "tracert": "C:\\Windows\\System32\\tracert.exe",
+            "sfc": "C:\\Windows\\System32\\sfc.exe",
+            "chkdsk": "C:\\Windows\\System32\\chkdsk.exe",
+            "whoami": "C:\\Windows\\System32\\whoami.exe",
+            "w32tm": "C:\\Windows\\System32\\w32tm.exe",
+            "systeminfo": "C:\\Windows\\System32\\systeminfo.exe",
+            "nslookup": "C:\\Windows\\System32\\nslookup.exe",
+            "netstat": "C:\\Windows\\System32\\netstat.exe",
+            "gpupdate": "C:\\Windows\\System32\\gpupdate.exe",
+            "arp": "C:\\Windows\\System32\\arp.exe",
+            "chkntfs": "C:\\Windows\\System32\\chkntfs.exe"
         },
-        "VisibleProviders": {}
+        "VisibleProviders": {
+            "fileSystem": "FileSystem",
+            "registry": "Registry",
+            "environment": "Environment"
+        }
     },
     "SessionConfiguration": {
         "RoleCapabilityFiles": {
-            "devOps": "C:\\JEA\\JEA.DevOps\\RoleCapabilities\\JEA.DevOps.psrc",
-            "support.Admin": "C:\\JEA\\JEA.Support.Admin\\RoleCapabilities\\JEA.Support.Admin.psrc",
-            "support.Controller": "C:\\JEA\\JEA.Support.Admin\\RoleCapabilities\\JEA.Support.Admin.psrc",
-            "support.Operator": "C:\\JEA\\JEA.Support.Admin\\RoleCapabilities\\JEA.Support.Admin.psrc"
+            "appSupportDomain": "C:\\JEA\\JEA.AppSupport.Domain\\RoleCapabilities\\JEA.AppSupport.Domain.psrc",
+            "appSupportSubDomain": "C:\\JEA\\JEA.AppSupport.SubDomain\\RoleCapabilities\\JEA.AppSupport.SubDomain.psrc"
         },
         "GroupRoleDefinitions": {
-            "support.Admin": "",
-            "support.Controller": "",
-            "support.Operator": ""
-        },
-        "RequiredGroups": {
-            "support.Admin": "",
-            "support.Controller": "",
-            "support.Operator": ""
+            "appSupport": "EM\\JEA.AppSupport"
         },
         "TranscriptDirectory": {
-            "support": "C:\\JEA\\supportTranscripts\\"
-        },
-        "ScriptsToProcess": {
-            "support": [
-                "C:\\JEA\\JEA.Config\\welcomeMessage.ps1",
-                "C:\\JEA\\JEA.Config\\authorizedAccessDisclaimer.ps1"
-            ]
+            "default": "C:\\JEA\\Transcripts\\"
         },
         "SessionType": {
             "restrictedRemoteServer": "RestrictedRemoteServer",
